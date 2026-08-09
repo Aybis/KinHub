@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion';
 
+/** Destination for the web app (dashboard). Update per environment. */
+const APP_URL = import.meta.env.VITE_APP_URL ?? 'http://localhost:5173';
+
 /* ---------------- Nav ---------------- */
 function Nav() {
   const links = [
@@ -22,9 +25,9 @@ function Nav() {
           </nav>
         </div>
         <div className="flex items-center gap-3">
-          <a href="/app" className="text-sm text-slate-300 transition hover:text-white">Sign in</a>
+          <a href={APP_URL} className="text-sm text-slate-300 transition hover:text-white">Sign in</a>
           <a
-            href="/app"
+            href={APP_URL}
             className="rounded-full bg-white px-5 py-2 text-sm font-semibold text-slate-900 transition hover:bg-slate-200"
           >
             Sign up free
@@ -70,7 +73,7 @@ function Hero() {
         transition={{ delay: 0.15 }}
         className="mt-10 flex flex-col gap-4 sm:flex-row"
       >
-        <a href="/app" className="rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-slate-900 transition hover:bg-slate-200">
+        <a href={APP_URL} className="rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-slate-900 transition hover:bg-slate-200">
           Start free
         </a>
         <a href="#pricing" className="rounded-full border border-slate-700 px-8 py-3.5 text-sm font-semibold text-white transition hover:border-slate-500">
@@ -298,7 +301,7 @@ function Pricing() {
                 ))}
               </ul>
               <a
-                href={p.name === 'Enterprise' ? '#for-families' : '/app'}
+                href={p.name === 'Enterprise' ? '#for-families' : APP_URL}
                 className={`mt-8 block w-full rounded-full py-3 text-center text-sm font-semibold transition ${
                   p.highlight
                     ? 'bg-white text-slate-900 hover:bg-slate-200'
@@ -324,7 +327,7 @@ function FinalCTA() {
         <p className="mx-auto mt-5 max-w-xl text-lg text-slate-300">
           Track your money and belongings together, transparently. Start free today.
         </p>
-        <a href="/app" className="mt-8 inline-block rounded-full bg-white px-10 py-4 text-sm font-semibold text-slate-900 transition hover:bg-slate-200">
+        <a href={APP_URL} className="mt-8 inline-block rounded-full bg-white px-10 py-4 text-sm font-semibold text-slate-900 transition hover:bg-slate-200">
           Start free
         </a>
       </div>

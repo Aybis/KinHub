@@ -11,8 +11,7 @@
     "target": "ES2022",
     "lib": ["ES2022"],
     "sourceMap": true,
-    "baseUrl": "./",
-    "incremental": true
+    "baseUrl": "./"
   },
   "include": ["src"]
 }
