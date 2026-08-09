@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "MAYA",
+    "slug": "maya-transparency-hub",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#FFFFFF"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.maya.transparencyhub"
+    },
+    "android": {
+      "package": "com.maya.transparencyhub"
+    },
+    "plugins": [
+      "expo-router"
+    ]
+  }
+}
