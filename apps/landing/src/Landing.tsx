@@ -2,25 +2,33 @@ import { motion } from 'framer-motion';
 
 /* ---------------- Nav ---------------- */
 function Nav() {
-  const links = ['Features', 'For Families', 'For Enterprise', 'Pricing'];
+  const links = [
+    { label: 'Features', href: '#features' },
+    { label: 'For Families', href: '#for-families' },
+    { label: 'For Enterprise', href: '#pricing' },
+    { label: 'Pricing', href: '#pricing' },
+  ];
   return (
     <header className="sticky top-0 z-50 border-b border-slate-800/60 bg-slate-950/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <div className="flex items-center gap-8">
-          <span className="text-lg font-extrabold tracking-wide">MAYA</span>
+          <a href="#top" className="text-lg font-extrabold tracking-wide">MAYA</a>
           <nav className="hidden gap-6 md:flex">
             {links.map((l) => (
-              <button key={l} className="text-sm text-slate-400 transition hover:text-white">
-                {l}
-              </button>
+              <a key={l.label} href={l.href} className="text-sm text-slate-400 transition hover:text-white">
+                {l.label}
+              </a>
             ))}
           </nav>
         </div>
         <div className="flex items-center gap-3">
-          <button className="text-sm text-slate-300 transition hover:text-white">Sign in</button>
-          <button className="rounded-full bg-white px-5 py-2 text-sm font-semibold text-slate-900 transition hover:bg-slate-200">
+          <a href="/app" className="text-sm text-slate-300 transition hover:text-white">Sign in</a>
+          <a
+            href="/app"
+            className="rounded-full bg-white px-5 py-2 text-sm font-semibold text-slate-900 transition hover:bg-slate-200"
+          >
             Sign up free
-          </button>
+          </a>
         </div>
       </div>
     </header>
@@ -62,12 +70,12 @@ function Hero() {
         transition={{ delay: 0.15 }}
         className="mt-10 flex flex-col gap-4 sm:flex-row"
       >
-        <button className="rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-slate-900 transition hover:bg-slate-200">
+        <a href="/app" className="rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-slate-900 transition hover:bg-slate-200">
           Start free
-        </button>
-        <button className="rounded-full border border-slate-700 px-8 py-3.5 text-sm font-semibold text-white transition hover:border-slate-500">
+        </a>
+        <a href="#pricing" className="rounded-full border border-slate-700 px-8 py-3.5 text-sm font-semibold text-white transition hover:border-slate-500">
           Book enterprise demo
-        </button>
+        </a>
       </motion.div>
       <motion.p
         initial={{ opacity: 0 }}
@@ -84,7 +92,7 @@ function Hero() {
 /* ---------------- What is MAYA ---------------- */
 function WhatIs() {
   return (
-    <section className="border-t border-slate-800/60 py-24">
+    <section id="for-families" className="border-t border-slate-800/60 py-24">
       <div className="mx-auto max-w-4xl px-6 text-center">
         <p className="text-sm font-medium uppercase tracking-widest text-slate-400">What is MAYA?</p>
         <h2 className="mt-3 text-4xl font-bold">Your family's home base for money clarity</h2>
@@ -109,7 +117,7 @@ const tabs = [
 
 function FeatureTabs() {
   return (
-    <section className="border-t border-slate-800/60 py-24">
+    <section id="features" className="border-t border-slate-800/60 py-24">
       <div className="mx-auto max-w-6xl px-6">
         <p className="text-center text-sm font-medium uppercase tracking-widest text-slate-400">
           The 5 pillars
@@ -261,7 +269,7 @@ const plans = [
 
 function Pricing() {
   return (
-    <section className="border-t border-slate-800/60 py-24">
+    <section id="pricing" className="border-t border-slate-800/60 py-24">
       <div className="mx-auto max-w-6xl px-6">
         <h2 className="text-center text-4xl font-bold">Simple, family-friendly pricing</h2>
         <p className="mx-auto mt-4 max-w-xl text-center text-slate-400">
@@ -289,15 +297,16 @@ function Pricing() {
                   </li>
                 ))}
               </ul>
-              <button
-                className={`mt-8 w-full rounded-full py-3 text-sm font-semibold transition ${
+              <a
+                href={p.name === 'Enterprise' ? '#for-families' : '/app'}
+                className={`mt-8 block w-full rounded-full py-3 text-center text-sm font-semibold transition ${
                   p.highlight
                     ? 'bg-white text-slate-900 hover:bg-slate-200'
                     : 'border border-slate-700 text-white hover:border-slate-500'
                 }`}
               >
                 {p.name === 'Enterprise' ? 'Contact sales' : `Start ${p.name}`}
-              </button>
+              </a>
             </div>
           ))}
         </div>
@@ -315,9 +324,9 @@ function FinalCTA() {
         <p className="mx-auto mt-5 max-w-xl text-lg text-slate-300">
           Track your money and belongings together, transparently. Start free today.
         </p>
-        <button className="mt-8 rounded-full bg-white px-10 py-4 text-sm font-semibold text-slate-900 transition hover:bg-slate-200">
+        <a href="/app" className="mt-8 inline-block rounded-full bg-white px-10 py-4 text-sm font-semibold text-slate-900 transition hover:bg-slate-200">
           Start free
-        </button>
+        </a>
       </div>
     </section>
   );
@@ -334,7 +343,7 @@ function Footer() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-10 md:grid-cols-4">
           <div>
-            <div className="text-lg font-extrabold">MAYA</div>
+            <a href="#top" className="text-lg font-extrabold">MAYA</a>
             <p className="mt-3 text-sm text-slate-400">
               Manage All Your Assets. The family transparency hub.
             </p>
@@ -345,9 +354,9 @@ function Footer() {
               <ul className="mt-3 space-y-2">
                 {col.items.map((item) => (
                   <li key={item}>
-                    <button className="text-sm text-slate-400 transition hover:text-white">
+                    <a href="#features" className="text-sm text-slate-400 transition hover:text-white">
                       {item}
-                    </button>
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -365,7 +374,7 @@ function Footer() {
 /* ---------------- Landing ---------------- */
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-slate-950 text-white antialiased">
+    <div id="top" className="min-h-screen bg-slate-950 text-white antialiased">
       <Nav />
       <Hero />
       <WhatIs />
