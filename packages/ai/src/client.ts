@@ -217,8 +217,8 @@ export async function suggestInventoryItem(
     });
 
     const raw = completion.choices[0]?.message?.content?.trim() ?? '';
-    const json = extractJson(raw);
-    return INVENTORY_SUGGESTION_SCHEMA.parse(json);
+    const parsed = INVENTORY_SUGGESTION_SCHEMA.parse(extractJson(raw)) as InventorySuggestion;
+    return parsed;
   });
 }
 
@@ -268,7 +268,7 @@ export async function categorizeTransaction(
     });
 
     const raw = completion.choices[0]?.message?.content?.trim() ?? '';
-    const json = extractJson(raw);
-    return CATEGORIZATION_SCHEMA.parse(json);
+    const parsed = CATEGORIZATION_SCHEMA.parse(extractJson(raw)) as CategorizationResult;
+    return parsed;
   });
 }
