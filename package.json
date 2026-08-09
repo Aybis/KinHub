@@ -15,7 +15,8 @@
   },
   "scripts": {
     "dev": "pnpm -r --parallel dev",
-    "build": "pnpm -r build",
+    "build:packages": "pnpm -r --filter './packages/*' build",
+    "build": "pnpm build:packages && pnpm -r build",
     "test": "pnpm -r test",
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck"
